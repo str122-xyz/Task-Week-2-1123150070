@@ -13,6 +13,17 @@ double _readNumber(String label) {
   }
 }
 
+double tambah(double a, double b) => a + b;
+double kurang(double a, double b) => a - b;
+double kali(double a, double b) => a * b;
+
+double bagi(double a, double b) {
+  if (b == 0) {
+    throw Exception('Error: Tidak bisa membagi dengan nol.');
+  }
+  return a / b;
+}
+
 // Fungsi utama program.
 void main() {
   while (true) {
@@ -38,25 +49,23 @@ void main() {
     final a = _readNumber('Masukkan angka pertama');
     final b = _readNumber('Masukkan angka kedua');
 
-    switch (choice) {
-      case '1':
-        print('Hasil: ${a + b}');
-        break;
-      case '2':
-        print('Hasil: ${a - b}');
-        break;
-      case '3':
-        print('Hasil: ${a * b}');
-        break;
-      case '4':
-        if (b == 0) {
-          print('Error: Tidak bisa membagi dengan nol.');
-        } else {
-          print('Hasil: ${a / b}');
-        }
-        break;
-      default:
-        print('Pilihan tidak dikenal.');
+    try {
+      switch (choice) {
+        case '1':
+          print('Hasil: ${tambah(a, b)}');
+          break;
+        case '2':
+          print('Hasil: ${kurang(a, b)}');
+          break;
+        case '3':
+          print('Hasil: ${kali(a, b)}');
+          break;
+        case '4':
+          print('Hasil: ${bagi(a, b)}');
+          break;
+      }
+    } catch (e) {
+      print(e);
     }
   }
 }
